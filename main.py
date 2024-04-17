@@ -9,6 +9,7 @@ def main():
             rows = get_integer_input('Digite o número de linhas da matriz: ')
             cols = get_integer_input('Digite o número de colunas da matriz: ')
             matrix = generate_random_matrix(rows, cols)
+
             if(isinstance(matrix, str)):
                 print(matrix)
                 continue
@@ -17,9 +18,9 @@ def main():
         print('\nMatriz:')
         print_matrix(matrix)
 
-        choice = input('\nEscolha uma operação:\n1 - Trocar linhas.\n2 - Multiplicar linha por uma constante.\n3 - Somar linha com outra multiplicada por uma constante.\n4 - Gerar nova matriz.\n5 - Sair.\nOpção: ')
+        choice = get_integer_input('\nEscolha uma operação:\n1 - Trocar linhas.\n2 - Multiplicar linha por uma constante.\n3 - Somar linha com outra multiplicada por uma constante.\n4 - Gerar nova matriz.\n5 - Sair.\nOpção: ')
 
-        if choice == '1':
+        if choice == 1:
             row_index_1 = get_integer_input('Digite o índice da primeira linha a ser trocada: ')
             row_index_2 = get_integer_input('Digite o índice da segunda linha a ser trocada: ')
             result = swap_rows(matrix, row_index_1, row_index_2)
@@ -30,7 +31,7 @@ def main():
                 print_matrix(result)
                 matrix = replace_current_matrix(matrix, result)            
 
-        elif choice == '2':
+        elif choice == 2:
             row_index = get_integer_input('Digite o índice da linha a ser multiplicada: ')
             constant = get_integer_input('Digite a constante pela qual multiplicar a linha: ')
             result = times(matrix, row_index, constant)
@@ -41,10 +42,10 @@ def main():
                 print_matrix(result)
                 matrix = replace_current_matrix(matrix, result)            
         
-        elif choice == '3':
+        elif choice == 3:
             target_row_index = get_integer_input('Digite o índice da linha de destino: ')
             source_row_index = get_integer_input('Digite o índice da linha a ser somada: ')
-            constant = get_integer_input('Digite a constante pela qual multiplicar a linha a ser somada: ')
+            constant = get_integer_input('Digite a constante pela qual multiplicará a linha a ser somada: ')
             result = sum_rows(matrix, target_row_index, source_row_index, constant)
             if isinstance(result, str):
                 print(result)
@@ -53,10 +54,10 @@ def main():
                 print_matrix(result)
                 matrix = replace_current_matrix(matrix, result)  
 
-        elif choice == '4':
+        elif choice == 4:
             generate_new_matrix = True
             
-        elif choice == '5':
+        elif choice == 5:
             break
             
         else:
